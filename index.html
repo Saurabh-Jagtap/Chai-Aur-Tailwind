@@ -1,95 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Chai Tailwind</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chai CSS | The Runtime Utility Engine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 
-<body class="chai-font-14 chai-bg-black chai-text-white">
+<body>
 
-  <!-- CONTAINER -->
-  <div class="chai-w-900 chai-mx-auto chai-p-20">
-
-    <!-- HERO -->
-    <div class="chai-bg-black chai-p-20 chai-rounded-10 chai-shadow-md chai-border-2">
-      <div class="chai-font-26 chai-fw-bold chai-text-orange">
-        ☕ Chai Tailwind
-      </div>
-      <div class="chai-mt-10 chai-text-gray">
-        Build UI with simple chai-* utility classes
-      </div>
+  <nav class="nav">
+    <div class="logo">☕ Chai<span>CSS</span></div>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#playground" class="btn-playground">Try it Live</a>
     </div>
+  </nav>
 
-    <!-- DESCRIPTION -->
-    <div class="chai-p-20 chai-m-10 chai-bg-dark chai-rounded-10 chai-shadow-sm">
-      This project demonstrates a lightweight utility-first CSS engine built using JavaScript.  
-      It dynamically parses classes like <b>chai-p-10</b> and <b>chai-bg-orange</b>.
-    </div>
-
-    <!-- CARD SECTION -->
-    <div class="chai-flex chai-gap-10 chai-m-20">
-
-      <div class="chai-bg-dark chai-p-15 chai-rounded-10 chai-shadow-sm chai-w-250">
-        <div class="chai-font-18 chai-fw-bold chai-text-orange">Utility Parsing</div>
-        <div class="chai-mt-10 chai-text-gray">
-          Classes are parsed using prefix-based rules.
+  <main>
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="status-pill">v1.0 Engine Live</div>
+        <h1>The JavaScript-First <br><span class="highlight">Utility Engine</span></h1>
+        <p>Skip the build step. Generate functional CSS utilities on the fly using a robust, rule-based runtime engine.
+        </p>
+        <div class="cta-group">
+          <a href="#playground" class="btn-primary">Open Playground →</a>
+          <a href="#" class="btn-secondary">View Documentation</a>
         </div>
       </div>
+      <div class="hero-glow"></div>
+    </section>
 
-      <div class="chai-bg-dark chai-p-15 chai-rounded-10 chai-shadow-sm chai-w-250">
-        <div class="chai-font-18 chai-fw-bold chai-text-orange">Dynamic Styling</div>
-        <div class="chai-mt-10 chai-text-gray">
-          Styles are applied at runtime using JavaScript.
+    <section id="features" class="features">
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="icon">⚡</div>
+          <h3>Instant Runtime</h3>
+          <p>Class names are parsed into styles immediately upon DOM injection, requiring no pre-compilation.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">🛠️</div>
+          <h3>Custom Rules</h3>
+          <p>Define dynamic properties like padding, margins, and borders with simple logic-based rules.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">📦</div>
+          <h3>Zero Config</h3>
+          <p>No configuration files or PostCSS required. Simply write your classes and let the engine handle the rest.
+          </p>
         </div>
       </div>
+    </section>
 
-      <div class="chai-bg-dark chai-p-15 chai-rounded-10 chai-shadow-sm chai-w-250">
-        <div class="chai-font-18 chai-fw-bold chai-text-orange">Reusable Design</div>
-        <div class="chai-mt-10 chai-text-gray">
-          Combine utilities for flexible UI.
+    <section id="playground" class="playground-section">
+      <div class="section-intro">
+        <h2>Interactive Workbench</h2>
+        <p>Design and prototype without ever leaving the browser.</p>
+      </div>
+
+      <div class="workspace">
+        <div class="workspace-header">
+          <div class="window-controls">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="tab-active">index.html</div>
+          <div class="spacer"></div>
+          <div class="engine-status">● Engine Active</div>
         </div>
-      </div>
-
-    </div>
-
-    <!-- BUTTON -->
-    <div class="chai-text-center chai-m-20">
-      <button class="chai-bg-orange chai-text-black chai-p-12 chai-rounded-5 chai-fw-bold chai-shadow-sm">
-        Explore Utilities
-      </button>
-    </div>
-
-    <!-- FEATURE BOX -->
-    <div class="chai-bg-dark chai-p-20 chai-rounded-10 chai-shadow-md chai-m-20 chai-border-2">
-      <div class="chai-font-18 chai-fw-bold chai-text-center chai-text-orange">
-        Multiple Utilities Combined
-      </div>
-      <div class="chai-text-center chai-mt-10 chai-text-gray">
-        Padding, Margin, Colors, Layout, Typography
-      </div>
-    </div>
-
-    <!-- BEFORE VS AFTER -->
-    <div class="chai-m-20">
-      <div class="chai-font-18 chai-fw-bold">Before vs After</div>
-
-      <div class="chai-mt-10 chai-text-gray">
-        Plain div without styling
-      </div>
-
-      <div class="chai-bg-orange chai-text-black chai-p-10 chai-rounded-10 chai-mt-10 chai-shadow-sm">
-        Styled using chai-* classes
-      </div>
-    </div>
-
-    <!-- FOOTER -->
-    <div class="chai-bg-black chai-text-gray chai-text-center chai-p-10 chai-rounded-5 chai-mt-20">
-      Built with ☕ + JavaScript Parser Engine
-    </div>
-
+        <div class="workspace-body">
+          <div class="editor-pane">
+            <textarea id="editor" spellcheck="false"><div class="chai-p-60 chai-bg-dark chai-rounded-20 chai-shadow-md chai-text-center">
+  <h1 class="chai-text-orange chai-font-40 chai-fw-bold chai-mb-20">Design Fast.</h1>
+  <p class="chai-text-gray chai-font-18">
+    This entire component is styled using 
+    <span class="chai-text-white chai-fw-bold">chai-*</span> classes.
+  </p>
+  <div class="chai-mt-30 chai-flex chai-justify-center chai-gap-10">
+    <div class="chai-w-40 chai-h-40 chai-bg-orange chai-rounded-10"></div>
+    <div class="chai-w-40 chai-h-40 chai-bg-orange chai-rounded-10"></div>
+    <div class="chai-w-40 chai-h-40 chai-bg-orange chai-rounded-10"></div>
   </div>
+</div></textarea>
+          </div>
+          <div class="preview-pane">
+            <iframe id="preview"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
-  <script src="main.js"></script>
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">☕ Chai<span>CSS</span></div>
+        <p>Empowering developers to build faster with runtime utility generation.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Engine</h4>
+        <a href="#features">Static Utilities</a>
+        <a href="#features">Dynamic Rules</a>
+        <a href="#features">Performance</a>
+      </div>
+      <div class="footer-links">
+        <h4>Community</h4>
+        <a href="https://github.com/Saurabh-Jagtap">GitHub</a>
+        <a href="https://www.linkedin.com/in/saurabh-jagtap-084893287">LinkedIn</a>
+        <a href="https://x.com/SaurabhJag004">X / Twitter</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Chai CSS Engine. Built for the modern web.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="main.js"></script>
 </body>
+
 </html>

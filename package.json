@@ -1,0 +1,35 @@
+{
+  "name": "chaisheet",
+  "version": "1.0.0",
+  "description": "A runtime-first utility CSS engine inspired by tea and speed.",
+  "main": "chaisheet.js",
+  "type": "module",
+  "files": [
+    "chaisheet.js",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Saurabh-Jagtap/Chai-Aur-Tailwind.git"
+  },
+  "keywords": [
+    "css",
+    "utility",
+    "runtime",
+    "engine",
+    "chai"
+  ],
+  "author": "Saurabh Jagtap",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Saurabh-Jagtap/Chai-Aur-Tailwind/issues"
+  },
+  "homepage": "https://github.com/Saurabh-Jagtap/Chai-Aur-Tailwind#readme",
+  "dependencies": {
+    "chaisheet": "^1.0.0"
+  }
+}

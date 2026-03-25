@@ -1,121 +1,41 @@
-const elements = document.querySelectorAll("*")
+import { ChaiEngine } from './chaisheet.js'; // Ensure this matches your filename exactly
 
-const staticUtils = {
-    "chai-flex": { display: "flex" },
-    "chai-items-center": { alignItems: "center" },
-    "chai-justify-center": { justifyContent: "center" },
+// 1. Initialize the engine
+const chai = new ChaiEngine();
 
-    "chai-text-center": { textAlign: "center" },
-    "chai-fw-bold": { fontWeight: "bold" },
-    "chai-text-red": { color: "red" },
-    "chai-text-orange": { color: "orange" },
-    "chai-text-white": { color: "white" },
-    "chai-text-gray": { color: "#bbbbbb" },
-    "chai-bg-dark": { backgroundColor: "#1a1a1a" },
+// 2. Select Elements
+const editor = document.querySelector('#editor');
+const preview = document.querySelector('#preview');
 
-    "chai-flex-col": { flexDirection: "column" },
-    "chai-flex-row": { flexDirection: "row" },
-    "chai-gap-10": { gap: "10px" },
-    "chai-block": { display: "block" },
+// 3. Define a single Update Function
+const updatePreview = () => {
+    const content = editor.value;
+    const iframeDoc = preview.contentDocument || preview.contentWindow.document;
 
-    "chai-shadow-sm": { boxShadow: "0 2px 4px rgba(0,0,0,0.1)" },
-    "chai-shadow-md": { boxShadow: "0 6px 10px rgba(0,0,0,0.15)" },
+    // Set up the iframe structure once
+    iframeDoc.open();
+    iframeDoc.write(`
+        <!DOCTYPE html>
+        <html>
+            <head>
+                <style>
+                    body { font-family: sans-serif; margin: 20px; }
+                </style>
+            </head>
+            <body>
+                ${content}
+            </body>
+        </html>
+    `);
+    iframeDoc.close();
 
-    "chai-mx-auto": { margin: "auto" },
+    // Run the engine on the new content
+    chai.run(iframeDoc);
 };
 
-const rules = [
-    {
-        prefix: "chai-p-",
-        property: "padding",
-        validate: (v) => !isNaN(v),
-        transform: (v) => v + "px"
-    },
-    {
-        prefix: "chai-m-",
-        property: "margin",
-        validate: (v) => !isNaN(v),
-        transform: (v) => v + "px"
-    },
-    {
-        prefix: "chai-mt-",
-        property: "marginTop",
-        validate: (v) => !isNaN(v),
-        transform: (v) => v + "px"
-    },
-    {
-        prefix: "chai-font-",
-        property: "fontSize",
-        validate: (v) => !isNaN(v),
-        transform: (v) => v + "px"
-    },
-    {
-        prefix: "chai-bg-",
-        property: "backgroundColor",
-        validate: () => true,
-        transform: (v) => v
-    },
-    {
-        prefix: "chai-w-",
-        property: "width",
-        validate: (v) => !isNaN(v),
-        transform: (v) => v + "px"
-    },
-    {
-        prefix: "chai-h-",
-        property: "height",
-        validate: (v) => !isNaN(v),
-        transform: (v) => v + "px"
-    },
-    {
-        prefix: "chai-border-",
-        property: "border",
-        validate: (v) => !isNaN(v),
-        transform: (v) => `${v}px solid black`
-    },
-    {
-        prefix: "chai-rounded-",
-        property: "borderRadius",
-        validate: (v) => !isNaN(v),
-        transform: (v) => v + "px"
-    },
-];
+// 4. Set up Listeners
+editor.addEventListener('input', updatePreview);
 
-function parseClass(cl) {
-    for (let rule of rules) {
-        if (cl.startsWith(rule.prefix)) {
-            const value = cl.slice(rule.prefix.length);
-
-            if (!rule.validate(value)) return null;
-
-            return {
-                property: rule.property,
-                value: rule.transform(value)
-            };
-        }
-    }
-    return null;
-}
-
-elements.forEach((el) => {
-    const styleMap = {};
-
-    [...el.classList].forEach((cl) => {
-        if (!cl.startsWith("chai-")) return;
-
-        // STATIC
-        if (staticUtils[cl]) {
-            Object.assign(styleMap, staticUtils[cl]);
-        } else {
-            // DYNAMIC
-            const parsed = parseClass(cl);
-            if (parsed) {
-                styleMap[parsed.property] = parsed.value;
-            }
-        }
-
-        el.classList.remove(cl);
-    });
-
-    Object.assign(el.style, styleMap);
-});
+// 5. Initial Runs
+chai.run(); // Style the main landing page
+window.addEventListener('load', updatePreview); // Style the default playground content
